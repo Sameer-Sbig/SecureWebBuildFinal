@@ -132,8 +132,9 @@ const CustomTable = ({ specialActionClicked, deleteClicked, editClicked, actions
                   <TableCell key={column.id} onClick={() => cellClicked && cellClicked(val)}>
                     {column.id == 'proposalNumber' ? <a style={{
                       cursor: 'pointer',
-                      color: 'blue'
+                      color: 'blue' 
                     }}>{row[column.id]}</a>  : row[column.id]}
+                    
                     {column.id === 'vendor_status' ? (row[column.id] ? 'Active' : 'Inactive') : ''}
                     {column.id == 'actions' &&
                       <div>

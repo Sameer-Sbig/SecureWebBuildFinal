@@ -19,6 +19,7 @@ table {
 .InwardDetailsMain{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 13px;
 }
 
 
@@ -51,4 +52,8 @@ button:hover{
 .dropdownContainer {
     display: flex;
     gap: 30px;
+}
+
+.InstrumentDetails{
+    font-size: 13px;
 }

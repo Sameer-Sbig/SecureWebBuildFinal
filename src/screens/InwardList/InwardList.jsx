@@ -14,7 +14,7 @@ import FullWidthTabs from "../inwardList2/InwardList3";
 const column = [
     {
         label: "Proposal No",
-        id: "proposal_no"
+        id: "proposalNumber"
     },
     {
         label: "Inward Type",
@@ -56,7 +56,7 @@ const column = [
 
 const data = [
     {
-        proposal_no: "5926451",
+        proposalNumber: "5926451",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Arogya Premier Policy",
@@ -68,7 +68,7 @@ const data = [
         status: "Discrepancy Resolved"
     },
     {
-        proposal_no: "5926566",
+        proposalNumber: "5926566",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Advance Loss Of Profit",
@@ -80,7 +80,7 @@ const data = [
         status: "Pending"
     },
     {
-        proposal_no: "5926451",
+        proposalNumber: "5926451",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Arogya Premier Policy",
@@ -92,7 +92,7 @@ const data = [
         status: "Discrepancy Resolved"
     },
     {
-        proposal_no: "5926566",
+        proposalNumber: "5926566",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Advance Loss Of Profit",
@@ -104,7 +104,7 @@ const data = [
         status: "Pending"
     },
     {
-        proposal_no: "5926451",
+        proposalNumber: "5926451",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Arogya Premier Policy",
@@ -116,7 +116,7 @@ const data = [
         status: "Discrepancy Resolved"
     },
     {
-        proposal_no: "5926566",
+        proposalNumber: "5926566",
         inward_type: "Proposal",
         instrument_no: 1,
         product: "Advance Loss Of Profit",

@@ -90,6 +90,13 @@ export default function FullWidthTabs() {
     const closeModalFunction = () => {
         setShowPopUp(false);
     }
+    const [modalName, setModalName] = useState('');
+
+    const handleButtonClick = (name) => {
+        setModalName(name);
+        console.log(name);
+        setShowPopUp(true);
+    };
 
     return (<>
 
@@ -133,13 +140,8 @@ export default function FullWidthTabs() {
                     <p><strong>Assigned Work Group:</strong> {proposalData.assignedWorkGroup}</p>
                     <p><strong>Assigned Branch:</strong> {proposalData.assignedBranch}</p>
 
-                    <button className={classes.statusBtn} onClick={() => {
-                        console.log('Update Status Button Pressed');
-                        setShowPopUp(true);
-                    }}>Update Status</button>
-                    <button className={classes.assignWorkBtn} onClick={() => {
-                        setShowPopUp(true);
-                    }}>Assign Work Group</button>
+                    <button className={classes.statusBtn} onClick={() => handleButtonClick('UpdateStatus')}>Update Status</button>
+                    <button className={classes.assignWorkBtn}onClick={() => handleButtonClick('AssignWork')}>Assign Work Group</button>
                     {/* <button className={classes.assignedBranchBtn}>Assign Branch</button> */}
 
 
@@ -174,7 +176,7 @@ export default function FullWidthTabs() {
                 onClose={() => setShowPopUp(false)}
                 width={900}
 
-                children={<Discrepancy closeModalFunction={closeModalFunction}/>}
+                children={<Discrepancy  name={modalName} closeModalFunction={closeModalFunction} />}
 
             />
 
@@ -189,6 +191,11 @@ const Discrepancy = props => {
 
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
+    // const [buttonName , setButtonName] = useState('')
+
+    // const buttonName = props.name === 'UpdateStatus' ? 'Submit' : 'Assign';
+
+    const buttonName = props.name === 'UpdateStatus' ? 'Submit' : 'Assign';
     return <>
         <div>
             <div className={classes.dropdownContainer}>
@@ -198,7 +205,7 @@ const Discrepancy = props => {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         // value={category}
-                        
+
                         onChange={(e) => {
                             setCategory(e.target.value);
                         }}
@@ -230,9 +237,13 @@ const Discrepancy = props => {
                 marginTop: 20,
                 textAlign: 'center'
             }}>
-            <button className={classes.statusBtn} onClick={() => {
-                props.closeModalFunction();
-            }}>Update</button>
+                <button className={classes.statusBtn} onClick={() => {
+                    props.closeModalFunction();
+                }}>
+
+                    {buttonName}
+
+                </button>
             </div>
         </div>
     </>
