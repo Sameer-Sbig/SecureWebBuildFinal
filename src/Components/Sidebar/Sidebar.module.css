@@ -29,7 +29,8 @@
 }
  
 .sidebar ul li:hover {
-    background-color: rgb(67, 66, 66);
+    background-color: #5831a7;
+    margin-inline: 5px;
 }
  
 .sidebarMenuIcon {

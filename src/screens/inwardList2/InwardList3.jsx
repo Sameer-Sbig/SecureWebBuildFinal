@@ -7,13 +7,19 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import man1 from '../../images/man1.jpg';
 import man2 from '../../images/man2.jpg';
 import man3 from '../../images/man3.jpg';
 
 
 import classes from './InwardList3.module.css';
+import { useState } from 'react';
+import CustomModal from '../../Components/Modal/CustomModal';
+import { Button } from '@mui/material';
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -60,7 +66,7 @@ export default function FullWidthTabs() {
         pphc: 'N',
         inwardTypeStatus: 'proposal',
         ckycExists: 'Yes',
-        ckycNumber: '1.23457E+13',
+        ckycNumber: '12345678912345',
         panNumber: 'BGLPS0250E',
         statusHistory: 'Pending',
         assignedWorkGroup: 'Branch',
@@ -78,6 +84,12 @@ export default function FullWidthTabs() {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
+
+    const [showPopUp, setShowPopUp] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+    const closeModalFunction = () => {
+        setShowPopUp(false);
+    }
 
     return (<>
 
@@ -103,31 +115,36 @@ export default function FullWidthTabs() {
         >
             <TabPanel value={value} index={0} >
                 <div className={classes.InwardDetailsMain}>
-            
-                        <p><strong>Proposal No:</strong> {proposalData.proposalNo}</p>
-                        <p><strong>Agreement Code:</strong> {proposalData.agreementCode}</p>
-                        <p><strong>Customer Name:</strong> {proposalData.customerName}</p>
-                        <p><strong>Quote No:</strong> {proposalData.quoteNo}</p>
-                        <p><strong>Policy No:</strong> {proposalData.policyNo}</p>
-                        <p><strong>Premium Amount:</strong> {proposalData.premiumAmount}</p>
-                        <p><strong>Proposal Signed Date:</strong> {proposalData.proposalSignedDate}</p>
-                        <p><strong>Co Insurance:</strong> {proposalData.coInsurance}</p>
-                        <p><strong>PPHC:</strong> {proposalData.pphc}</p>
-                        <p><strong>Inward Type Status:</strong> {proposalData.inwardTypeStatus}</p>
-                        <p><strong>CKYC Exists:</strong> {proposalData.ckycExists}</p>
-                        <p><strong>CKYC Number:</strong> {proposalData.ckycNumber}</p>
-                        <p><strong>PAN Number:</strong> {proposalData.panNumber}</p>
-                        <p><strong>Status History:</strong> {proposalData.statusHistory}</p>
-                        <p><strong>Assigned Work Group:</strong> {proposalData.assignedWorkGroup}</p>
-                        <p><strong>Assigned Branch:</strong> {proposalData.assignedBranch}</p>
 
-                        <button className={classes.statusBtn}>Update Status</button>
-                    <button className={classes.assignWorkBtn}>Assign Work Group</button>
-                    <button className={classes.assignedBranchBtn}>Assign Branch</button>
-                    
+                    <p><strong>Proposal No:</strong> {proposalData.proposalNo}</p>
+                    <p><strong>Agreement Code:</strong> {proposalData.agreementCode}</p>
+                    <p><strong>Customer Name:</strong> {proposalData.customerName}</p>
+                    <p><strong>Quote No:</strong> {proposalData.quoteNo}</p>
+                    <p><strong>Policy No:</strong> {proposalData.policyNo}</p>
+                    <p><strong>Premium Amount:</strong> {proposalData.premiumAmount}</p>
+                    <p><strong>Proposal Signed Date:</strong> {proposalData.proposalSignedDate}</p>
+                    <p><strong>Co Insurance:</strong> {proposalData.coInsurance}</p>
+                    <p><strong>PPHC:</strong> {proposalData.pphc}</p>
+                    <p><strong>Inward Type Status:</strong> {proposalData.inwardTypeStatus}</p>
+                    <p><strong>CKYC Exists:</strong> {proposalData.ckycExists}</p>
+                    <p><strong>CKYC Number:</strong> {proposalData.ckycNumber}</p>
+                    <p><strong>PAN Number:</strong> {proposalData.panNumber}</p>
+                    <p><strong>Status History:</strong> {proposalData.statusHistory}</p>
+                    <p><strong>Assigned Work Group:</strong> {proposalData.assignedWorkGroup}</p>
+                    <p><strong>Assigned Branch:</strong> {proposalData.assignedBranch}</p>
+
+                    <button className={classes.statusBtn} onClick={() => {
+                        console.log('Update Status Button Pressed');
+                        setShowPopUp(true);
+                    }}>Update Status</button>
+                    <button className={classes.assignWorkBtn} onClick={() => {
+                        setShowPopUp(true);
+                    }}>Assign Work Group</button>
+                    {/* <button className={classes.assignedBranchBtn}>Assign Branch</button> */}
+
 
                 </div>
-               
+
 
             </TabPanel>
             <TabPanel value={value} index={1} dir={theme.direction}>
@@ -151,7 +168,72 @@ export default function FullWidthTabs() {
             </TabPanel>
         </SwipeableViews>
 
+        <div>
+            <CustomModal
+                open={showPopUp}
+                onClose={() => setShowPopUp(false)}
+                width={900}
 
+                children={<Discrepancy closeModalFunction={closeModalFunction}/>}
+
+            />
+
+
+
+        </div>
     </>
     );
+}
+
+const Discrepancy = props => {
+
+    const [category, setCategory] = useState('');
+    const [subCategory, setSubCategory] = useState('');
+    return <>
+        <div>
+            <div className={classes.dropdownContainer}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Update Status</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        // value={category}
+                        
+                        onChange={(e) => {
+                            setCategory(e.target.value);
+                        }}
+                    >
+                        <MenuItem value={'Insufficient Documents'}>Insufficient Documents</MenuItem>
+                        <MenuItem value={'Wrong Documents'}>Wrong Documents</MenuItem>
+                        <MenuItem value={'Premium and Payment Related'}>'Premium and Payment Related</MenuItem>
+                        <MenuItem value={'Insufficient Information of PF'}>Insufficient Information of PF</MenuItem>
+                    </Select>
+                </FormControl>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Discrepancy Sub-Category</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={subCategory}
+                        label="Age"
+                        onChange={(e) => {
+                            setSubCategory(e.target.value);
+                        }}
+                    >
+                        <MenuItem value={'Risk Related Documents'}>Risk Related Documents</MenuItem>
+                        <MenuItem value={'AML &  KYC Documents'}>AML &  KYC Documents</MenuItem>
+                        <MenuItem value={'Approvals'}>Approvals</MenuItem>
+                    </Select>
+                </FormControl>
+            </div>
+            <div style={{
+                marginTop: 20,
+                textAlign: 'center'
+            }}>
+            <button className={classes.statusBtn} onClick={() => {
+                props.closeModalFunction();
+            }}>Update</button>
+            </div>
+        </div>
+    </>
 }

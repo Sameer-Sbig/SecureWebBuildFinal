@@ -8,16 +8,16 @@ import { useState } from 'react';
 const InwardList2 = () => {
 
     const [openModal, setOpenModal] = useState(false);
-    const [value, setValue] =useState('one');
+    const [value, setValue] = useState('one');
 
     const handleChange = (event, newValue) => {
-      setValue(newValue);
+        setValue(newValue);
     };
 
 
     // return <>
     //     <CustomModal>
-            
+
 
     //     <Tabs
     //     value={value}
@@ -32,7 +32,7 @@ const InwardList2 = () => {
     //     <Tab value="two" label="Item Two" />
     //     <Tab value="three" label="Item Three" />
     //   </Tabs>
-            
+
     //     </CustomModal>
 
 
@@ -103,14 +103,14 @@ const InwardList2 = () => {
                 <div className={classes.Grid2}>
 
 
-                        <label>Instrument Type</label>
-                        <input></input>
+                    <label>Instrument Type</label>
+                    <input></input>
 
-                        <label>Instrument No</label>
-                        <input></input>
+                    <label>Instrument No</label>
+                    <input></input>
 
-                        <label>Instrument Amount</label>
-                        <input></input>
+                    <label>Instrument Amount</label>
+                    <input></input>
 
 
 

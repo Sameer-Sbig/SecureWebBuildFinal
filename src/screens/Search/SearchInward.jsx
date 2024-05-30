@@ -6,8 +6,21 @@ import Menu from '@mui/material/Menu';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import CustomTable from '../../Components/table/CustomTable';
+import CustomModal from '../../Components/Modal/CustomModal';
 
+import PropTypes from 'prop-types';
+import SwipeableViews from 'react-swipeable-views';
+import { useTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
+import man1 from '../../images/man1.jpg';
+import man2 from '../../images/man2.jpg';
+import man3 from '../../images/man3.jpg';
+import FullWidthTabs from '../inwardList2/InwardList3';
 
 
 const columns1 = [
@@ -109,47 +122,37 @@ const SearchInward = () => {
         setDropDown1(e.target.value);
         console.log('In dropdown', e.target.value);
     }
+
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    
+    const cellClicked = () => {
+        setOpenModal(true);
+        setModalIsOpen(true)
+    };
+    const [openModal, setOpenModal] = useState(false);
+    const [value, setValue] = useState('one');
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
     return <>
+       <CustomModal
+            open={openModal}
+            onClose={() => setOpenModal(false)}
+            width={1200}
+            children={<FullWidthTabs/>}
+
+
+        />
         <div className={classes.formFather}>
         <form>
             <div className={classes.SearchInwardMain}>
                 <h3>Search By   </h3>
                 <div className={classes.headingFather}>
-                    {/* <Button
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                    sx={{}}
-                    size='large'
-                   
-                >
-                    {searchBy}
-                </Button>
-                <Menu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={open}
-                    onClose={handleClose}
-                    MenuListProps={{
-                        'aria-labelledby': 'basic-button',
-                    }}
-                >
-                    <MenuItem onClick={() => handleMenuItemClick('/')}>Proposal Number</MenuItem>
-                    <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>Agreement Code</MenuItem>
-                    <MenuItem onClick={() => handleMenuItemClick('/searchInward')}>Product Name</MenuItem>
-                    <MenuItem onClick={()=> {}} >Customer Number   </MenuItem>
-                    <MenuItem onClick={() => {}}></MenuItem>
-
-                </Menu> */}
+                  
                     <div className={classes.heading}>
-                        {/* <div className={classes.headingbaby1}>
-
-                        <label>
-                            Search By 
-                        </label>
-                    </div> */}
+                     
 
                         <select onChange={dropDownValue}>
                             <option value='Proposal Number'>Proposal Number</option>
@@ -170,7 +173,7 @@ const SearchInward = () => {
         </div>
         <div className={classes.tableOutline}>
 
-        {showTable && <CustomTable page={page} setPage={setPage}   columns={columns1} data={data1}/>}
+        {showTable && <CustomTable isNavLink={true} cellClicked={cellClicked} page={page} setPage={setPage}   columns={columns1} data={data1}/>}
         </div>
 
 

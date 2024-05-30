@@ -47,3 +47,8 @@ button:hover{
     grid-template-columns: 1fr 1fr 1fr ;
 
 }
+
+.dropdownContainer {
+    display: flex;
+    gap: 30px;
+}

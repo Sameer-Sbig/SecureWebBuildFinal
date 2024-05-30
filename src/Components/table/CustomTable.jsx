@@ -85,8 +85,10 @@ const CustomTable = ({ specialActionClicked, deleteClicked, editClicked, actions
                 />
               </TableCell>
             }
-            {columns.map((column) => (
-              <TableCell key={column.id} style={{
+            {columns.map((column) => {
+            
+
+              return <TableCell key={column.id} style={{
                 color: 'white',
                 fontWeight: 'bold'
               }}>
@@ -98,7 +100,7 @@ const CustomTable = ({ specialActionClicked, deleteClicked, editClicked, actions
                   {column.label}
                 </TableSortLabel>
               </TableCell>
-            ))}
+})}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -125,9 +127,13 @@ const CustomTable = ({ specialActionClicked, deleteClicked, editClicked, actions
               }
               {columns.map((column) => {
                 let val = row[column.id];
+
                 return (
                   <TableCell key={column.id} onClick={() => cellClicked && cellClicked(val)}>
-                    {column.id == 'is_active' ? <Chip label={val === 1 ? 'Active' : 'Inactive'} color={val === 1 ? 'success' : 'error'} /> : val}
+                    {column.id == 'proposalNumber' ? <a style={{
+                      cursor: 'pointer',
+                      color: 'blue'
+                    }}>{row[column.id]}</a>  : row[column.id]}
                     {column.id === 'vendor_status' ? (row[column.id] ? 'Active' : 'Inactive') : ''}
                     {column.id == 'actions' &&
                       <div>

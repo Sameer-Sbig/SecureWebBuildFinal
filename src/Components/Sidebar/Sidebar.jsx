@@ -1,4 +1,4 @@
-import { Close, Notes } from "@mui/icons-material";
+import { Close, FormatAlignJustify, Notes } from "@mui/icons-material";
 import classes from "./Sidebar.module.css";
 import { useState } from "react";
 import Button from '@mui/material/Button';
@@ -57,7 +57,7 @@ const Sidebar = () => {
 
 
     return <>
-            <div className={classes.sidebar} style={{ width: sidebarClosed ? '40px' : '16%' }}>
+            <div className={classes.sidebar} style={{ width: sidebarClosed ? '40px' : '17%' }}>
                 <div
                     onClick={() => setSidebarclosed(prev => !prev)}
                     className={classes.sidebarMenuIcon}
@@ -66,17 +66,19 @@ const Sidebar = () => {
                 </div>
                 <ul className={classes.sidebarList}>
                     <li>
-                        <Notes />
-
+                        
+                        <Notes/>
                         <Button
                             id="basic-button"
                             aria-controls={open ? 'basic-menu' : undefined}
                             aria-haspopup="true"
                             aria-expanded={open ? 'true' : undefined}
                             onClick={handleClick}
-                            sx={{color:'white' , padding:'0px'}}
+                            sx={{color:'white' , padding:'0px' , margin:'0px',justifyContent:'left'}}
                             endIcon={<KeyboardArrowDownIcon />}
-                        >
+                            // startIcon={<Notes />}
+                            
+                        >   
                             {nameSelect}
                         </Button>
                         <Menu
@@ -89,9 +91,10 @@ const Sidebar = () => {
                             }}
                         >
                             <MenuItem onClick={() => handleMenuItemClick('/')}>DashBoard</MenuItem>
+                            <MenuItem onClick={() => handleMenuItemClick('/inwardList')}>Inward List</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>New Inward</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/searchInward')}>Search</MenuItem>
-                            <MenuItem onClick={() => handleMenuItemClick('/inwardList')}>Inward List</MenuItem>
+                            
                            
                         </Menu>
 
