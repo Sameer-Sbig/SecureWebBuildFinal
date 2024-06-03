@@ -10,6 +10,7 @@ import SearchInward from "./screens/Search/SearchInward";
 import InwardForm2 from "./Components/Forms/InwardForm2";
 import InwardList from "./screens/InwardList/InwardList";
 import InwardList2 from "./screens/inwardList2/InwardList2";
+import DirectSearch from "./screens/DirectSearch/DirectSearch";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
             <Route path="/inwardForm2" element={<InwardForm2/>}></Route>
             <Route path="/inwardList" element={<InwardList/>}></Route>
             <Route path="/inwardList2" element={<InwardList2></InwardList2>}></Route>
+            <Route path="/directSearch" element={<DirectSearch></DirectSearch>}></Route>
             
           </Routes>
         </div>

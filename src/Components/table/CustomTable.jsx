@@ -130,10 +130,14 @@ const CustomTable = ({ specialActionClicked, deleteClicked, editClicked, actions
 
                 return (
                   <TableCell key={column.id} onClick={() => cellClicked && cellClicked(val)}>
-                    {column.id == 'proposalNumber' ? <a style={{
+                    {Object.keys(column).includes('hyperLink') ? <a style={{
                       cursor: 'pointer',
                       color: 'blue' 
-                    }}>{row[column.id]}</a>  : row[column.id]}
+                    }}>{row[column.id]}</a>: row[column.id]}
+                    {/* {column.id == 'proposalNumber' && !Object.keys(column).includes('hyperLink') && <a style={{
+                      cursor: 'pointer',
+                      color: 'blue' 
+                    }}>{row[column.id]}</a>} */}
                     
                     {column.id === 'vendor_status' ? (row[column.id] ? 'Active' : 'Inactive') : ''}
                     {column.id == 'actions' &&

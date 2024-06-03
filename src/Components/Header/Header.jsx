@@ -7,9 +7,10 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const nav = useNavigate();
     return (
         <>
             <nav className={classes.header}>
@@ -39,7 +40,10 @@ const Header = () => {
                             placeholder="Search"
                             endAdornment={
                                 <InputAdornment position="end">
-                                    <IconButton aria-label="search" edge="end" sx={{width:'15px' , marginRight:'10px'}}>
+                                    
+                                    <IconButton aria-label="search" edge="end" sx={{width:'15px' , marginRight:'10px'}} onClick={() => {
+                                        nav('/directSearch');
+                                    }}>
                                         <SearchIcon/>
                                     </IconButton>
                                 </InputAdornment>

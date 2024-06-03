@@ -14,6 +14,7 @@ const columns = [
   {
     label: "Discrepancy",
     id: "discrepancy",
+    hyperLink: true
   },
   {
     label: "Discrepancy Submitted",

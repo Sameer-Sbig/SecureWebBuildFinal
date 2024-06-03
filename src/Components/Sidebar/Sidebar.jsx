@@ -92,7 +92,7 @@ const Sidebar = () => {
                         >
                             <MenuItem onClick={() => handleMenuItemClick('/')}>DashBoard</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/inwardList')}>Inward List</MenuItem>
-                            <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>New Inward</MenuItem>
+                            <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>Proposal</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/searchInward')}>Search</MenuItem>
                             
                            

@@ -1,20 +1,18 @@
 import CustomTable from "../../Components/table/CustomTable";
 import React, { useState } from 'react';
 import classes from "./InwardList.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , NavLink} from "react-router-dom";
 import CustomModal from "../../Components/Modal/CustomModal";
 import FullWidthTabs from "../inwardList2/InwardList3";
-
-//////
-
+import classes2 from "../Dashboard/DashBoard.module.css";
 
 
-//////////////
 
 const column = [
     {
         label: "Proposal No",
-        id: "proposalNumber"
+        id: "proposalNumber",
+        hyperLink:true
     },
     {
         label: "Inward Type",
@@ -152,7 +150,7 @@ const InwardList = () => {
             open={openModal}
             onClose={() => setOpenModal(false)}
             width={1200}
-            children={<FullWidthTabs/>}
+            children={<FullWidthTabs />}
 
 
         />
@@ -160,6 +158,10 @@ const InwardList = () => {
         <div className={classes.tableOutline}>
             <div className={classes.heading}>
                 <h2>Inward List</h2>
+                <button className={classes2.newInwardBtn}><NavLink to='/inwardForm'>
+                    New Inward
+                </NavLink>
+                </button>
             </div>
             <CustomTable isNavLink={true} page={page} setPage={setPage} columns={column} data={data} cellClicked={cellClicked}></CustomTable>
         </div>
