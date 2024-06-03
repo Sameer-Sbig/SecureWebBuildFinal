@@ -31,7 +31,7 @@ const Sidebar = () => {
     // };
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const [nameSelect , setNameSelect] = useState('Inward');
+    const [nameSelect , setNameSelect] = useState('Prposal');
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -42,14 +42,14 @@ const Sidebar = () => {
     const handleMenuItemClick = (route) => {
         navigate(route);
         handleClose();
-        if(route == '/'){
-            setNameSelect('DashBoard');
+        // if(route == '/'){
+        //     setNameSelect('DashBoard');
 
-        }
-        if(route == '/inwardForm'){
-            setNameSelect ('New Inward Form');
+        // }
+        // if(route == '/inwardForm'){
+        //     setNameSelect ('New Inward');
 
-        }
+        // }
        
     };
     
@@ -92,7 +92,7 @@ const Sidebar = () => {
                         >
                             <MenuItem onClick={() => handleMenuItemClick('/')}>DashBoard</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/inwardList')}>Inward List</MenuItem>
-                            <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>Proposal</MenuItem>
+                            <MenuItem onClick={() => handleMenuItemClick('/inwardForm')}>New Inward</MenuItem>
                             <MenuItem onClick={() => handleMenuItemClick('/searchInward')}>Search</MenuItem>
                             
                            
